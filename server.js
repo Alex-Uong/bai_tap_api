@@ -1,9 +1,9 @@
 import express from "express";
-import { DataTypes, Sequelize } from "sequelize";
+import { Sequelize } from "sequelize";
 import initModels from "./models/init-models.js";
 import likeRoutes from "./routes/likeRoutes.js";
-// import rateRoutes from "./routes/rateRoutes.js";
-// import orderRoutes from "./routes/orderRoutes.js";
+import rateRoutes from "./routes/rateRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
 
 const app = express();
 
@@ -17,8 +17,8 @@ const models = initModels(sequelize);
 app.locals.models = models;
 
 app.use("/likes", likeRoutes);
-// app.use("/rates", rateRoutes);
-// app.use("/orders", orderRoutes);
+app.use("/rates", rateRoutes);
+app.use("/orders", orderRoutes);
 
 const startServer = async () => {
   try {
